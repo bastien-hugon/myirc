@@ -1,10 +1,3 @@
-coding_style:
-  script:
-   - cd src_server
-   - ../ci/coding_style
-   - cd ../src_client
-   - ../ci/coding_style
-
 unit_tests:
   script:
    - make unit_tests
