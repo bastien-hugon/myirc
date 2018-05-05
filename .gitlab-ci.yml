@@ -1,0 +1,10 @@
+coding_style:
+  script:
+   - ./ci/coding_style
+
+unit_tests:
+  script:
+   - make unit_tests
+  except:
+   - bastien
+   - antoine
