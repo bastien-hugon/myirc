@@ -18,5 +18,6 @@
 	#include "server.h"
 
 	void init_server(server_t *srv, int port);
+	void init_epoll(server_t *srv);
 
 #endif /* !INIT_H_ */

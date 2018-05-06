@@ -28,5 +28,7 @@ int main(int ac, char **av)
 	if (!check_param(ac, av))
 		return (EXIT_FAILURE);
 	init_server(&srv, atoi(av[1]));
+	init_epoll(&srv);
+	socket_manager(&srv);
 	return (EXIT_SUCCESS);
 }

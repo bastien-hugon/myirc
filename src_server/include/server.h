@@ -28,9 +28,11 @@
 	#include <netdb.h>
 	#include <netinet/in.h>
 	#include <arpa/inet.h>
+	#include <sys/epoll.h>
 
 	#undef EXIT_FAILURE
 	#define EXIT_FAILURE (84)
+	#define MAX_EVENTS (100)
 
 	/**
 	* @struct users_t
@@ -43,6 +45,9 @@
 	{
 		char *nick;
 		int fd;
+		struct sockaddr_in s_in;
+		char *c_ip;
+		socklen_t size;
 		struct users_s *next;
 	} users_t;
 
@@ -68,7 +73,6 @@
 	{
 		int s_fd;
 		struct sockaddr_in s_s_in;
-		socklen_t c_size;
 	} socket_t;
 
 	/**
@@ -81,9 +85,14 @@
 		int port;
 		socket_t sock;
 		chan_t *chan;
+		struct epoll_event ev;
+		struct epoll_event events[MAX_EVENTS];
+		int epollfd;
 	} server_t;
 
 	#include "error_handling.h"
 	#include "init.h"
+	#include "socket_manager.h"
+	#include "user_manager.h"
 
 #endif

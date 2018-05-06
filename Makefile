@@ -16,7 +16,12 @@ RM	= rm -f
 SRCS_SERVER	=	./src_server/main.c \
 			./src_server/error_handling/check_param.c \
 			./src_server/error_handling/print_messages.c \
-			./src_server/init/init_server.c
+			./src_server/init/init_server.c \
+			./src_server/init/init_epoll.c \
+			./src_server/socket_manager/socket_manager.c \
+			./src_server/socket_manager/call_worker.c \
+			./src_server/user_manager/create_user.c
+			
 
 SRCS_CLIENT	= 
 
