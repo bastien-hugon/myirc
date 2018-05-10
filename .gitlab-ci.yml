@@ -1,3 +1,6 @@
+services:
+  - epitechcontent/epitest-docker
+
 unit_tests:
   script:
    - make unit_tests
