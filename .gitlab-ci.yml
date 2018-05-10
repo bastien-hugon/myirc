@@ -1,5 +1,4 @@
-services:
-  - epitechcontent/epitest-docker
+image: epitechcontent/epitest-docker
 
 unit_tests:
   script:
