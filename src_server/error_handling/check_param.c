@@ -24,6 +24,7 @@
 */
 bool check_param(int ac, char **av)
 {
+	printf("%s %s", av[0], av[1]);
 	if (ac != 2)
 		return (error_msg("Bad arguments."));
 	if (!strcmp("-help", av[1]))
