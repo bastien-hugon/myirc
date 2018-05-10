@@ -54,8 +54,9 @@ $(SERVER): $(OBJS_SERVER)
 	$(CC) $(OBJS_SERVER) -o $(SERVER) $(LDFLAGS)
 
 unit_tests: $(OBJS_TESTS)
-	$(CC) $(OBJS_TESTS) -o unit_tests -lcriterion -lgcov --coverage
+	$(CC) -lcriterion -fprofile-arcs -ftest-coverage -fPIC -O0 --coverage $(CFLAGS) $(SRCS_TESTS) -o unit_tests
 	@./unit_tests
+	gcovr -r .
 
 doxygen:
 	@doxygen
