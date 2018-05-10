@@ -1,4 +1,6 @@
 unit_tests:
+  services:
+  - epitechcontent/epitest-docker
   script:
    - make unit_tests
   except:
