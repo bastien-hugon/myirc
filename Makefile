@@ -14,18 +14,21 @@ CC	= gcc
 RM	= rm -f
 
 SRCS_SERVER	=	./src_server/main.c \
+			./src_server/dump_server.c \
 			./src_server/error_handling/check_param.c \
 			./src_server/error_handling/print_messages.c \
 			./src_server/init/init_server.c \
 			./src_server/init/init_epoll.c \
 			./src_server/socket_manager/socket_manager.c \
 			./src_server/socket_manager/call_worker.c \
-			./src_server/user_manager/create_user.c
-			
+			./src_server/user_manager/create_user.c \
+			./src_server/user_manager/get_users.c \
+			./src_server/channel_manager/create_channel.c \
+			./src_server/channel_manager/join_channel.c
 
 SRCS_CLIENT	= 
 
-SRCS_TESTS	= 
+SRCS_TESTS	=	
 
 OBJS_SERVER	= $(SRCS_SERVER:.c=.o)
 
@@ -37,8 +40,8 @@ all: $(SERVER)
 $(SERVER): $(OBJS_SERVER)
 	$(CC) $(OBJS_SERVER) -o $(SERVER) $(LDFLAGS)
 
-unit_tests: $(OBJS_TESTS)
-	$(CC) $(OBJS_TESTS) -o unit_tests -lcriterion -lgcov --coverage
+unit_tests: $(OBJS_TESTS) $(OBJ_SERVER)
+	$(CC) $(OBJS_TESTS) $(OBJ_SERVER) -o unit_tests -lcriterion -lgcov --coverage
 	@./unit_tests
 
 doxygen:

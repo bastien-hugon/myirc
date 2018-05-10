@@ -18,4 +18,6 @@
 	#include "server.h"
 
 	users_t *create_user(void);
+	users_t *get_user_by_fd(server_t *srv, int fd);
+
 #endif /* !USER_MANAGER_H_ */

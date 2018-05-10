@@ -94,5 +94,8 @@
 	#include "init.h"
 	#include "socket_manager.h"
 	#include "user_manager.h"
+	#include "channel_manager.h"
+
+	void dump_server(server_t *srv);
 
 #endif

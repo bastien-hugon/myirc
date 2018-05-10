@@ -35,8 +35,11 @@ void manage_events(server_t *srv, int i)
 		if (epoll_ctl(srv->epollfd, EPOLL_CTL_ADD, new_user->fd, \
 		&(srv->ev)) == -1)
 			close_and_msg(srv, "error: epoll_ctl");
+		push_user_to_chan(new_user, srv->chan);
+		dump_server(srv);
 	} else {
 		call_worker(srv, srv->events[i].data.fd);
+		dump_server(srv);
 	}
 }
 
