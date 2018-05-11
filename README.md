@@ -1,9 +1,10 @@
 [![pipeline status](https://gitlab.com/hugon-epitech/myirc/badges/master/pipeline.svg)](https://gitlab.com/hugon-epitech/myirc/commits/master)
 [![coverage report](https://gitlab.com/hugon-epitech/myirc/badges/master/coverage.svg)](https://gitlab.com/hugon-epitech/myirc/commits/master)
-#MyIRC - Epitech Project (PSU Network)
 
-Create an IRC Server and Client
-The project have to be compliant with the RFC 1490
+# MyIRC - Epitech Project (PSU Network)
+
+Create an IRC Server and Client.
+The project have to be compliant with the RFC 1490.
 
 ## Compile
 ```bash
