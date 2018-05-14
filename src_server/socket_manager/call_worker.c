@@ -15,13 +15,20 @@
 #include "server.h"
 
 /**
-*@brief Parse message and call functions or write message in the good channel
+*@brief Parse message and call functions
 *
 *@param srv Main server_t struct
 *@param fd The client's fd who sent a message
 */
 void call_worker(server_t *srv, int fd)
 {
-	printf("Something received from fd: %d\n", fd);
-	(void)srv;
+	users_t *curr = get_user_by_fd(srv, fd);
+	char buffer[BUFF_SIZE];
+	int rd = read(fd, &buffer, BUFF_SIZE - 1);
+
+	if(rd != -1) {
+		buffer[rd] = '\0';
+		if (cb_add_data(curr, buffer))
+			exec_user_command(srv, curr);
+	}
 }

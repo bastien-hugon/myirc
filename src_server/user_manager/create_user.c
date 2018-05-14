@@ -27,6 +27,9 @@ users_t *create_user(void)
 		exit(EXIT_FAILURE);
 	user->next = NULL;
 	user->nick = NULL;
+	user->is_logged = false;
 	user->size = sizeof(user->s_in);
+	user->buff.start = 0;
+	user->buff.end = 0;
 	return (user);
 }

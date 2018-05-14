@@ -19,5 +19,6 @@
 
 	void socket_manager(server_t *srv);
 	void call_worker(server_t *srv, int fd);
+	bool cb_add_data(users_t *usr, char *buff);
 
 #endif /* !SOCKET_MANAGER_H_ */

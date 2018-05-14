@@ -32,7 +32,24 @@
 
 	#undef EXIT_FAILURE
 	#define EXIT_FAILURE (84)
+
 	#define MAX_EVENTS (100)
+	#define BUFF_SIZE (1024)
+	#define BUFF_LEN(s, e) ((s < e) ? (e - s + 1) : (BUFF_SIZE - s + e + \
+	1))
+
+	/**
+	*@struct circular_buffer_t
+	*@brief Structure de buffer circulaire
+	*
+	*Contient le buffer circulaire d'un utilisateur
+	*/
+	typedef struct circular_buffer_s
+	{
+		char buffer[BUFF_SIZE];
+		int start;
+		int end;
+	} circular_buffer_t;
 
 	/**
 	* @struct users_t
@@ -43,11 +60,13 @@
 	*/
 	typedef struct users_s
 	{
-		char *nick;
 		int fd;
+		char *nick;
+		bool is_logged;
 		struct sockaddr_in s_in;
 		char *c_ip;
 		socklen_t size;
+		circular_buffer_t buff;
 		struct users_s *next;
 	} users_t;
 
@@ -85,6 +104,7 @@
 		int port;
 		socket_t sock;
 		chan_t *chan;
+		fptr *cmds;
 		struct epoll_event ev;
 		struct epoll_event events[MAX_EVENTS];
 		int epollfd;
@@ -95,6 +115,7 @@
 	#include "socket_manager.h"
 	#include "user_manager.h"
 	#include "channel_manager.h"
+	#include "command_manager.h"
 
 	void dump_server(server_t *srv);
 

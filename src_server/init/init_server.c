@@ -37,4 +37,5 @@ void init_server(server_t *srv, int port)
 		exit(close_and_msg(srv, "Cannot listen"));
 	srv->chan = NULL;
 	add_channel(srv, create_channel("@ghost"));
+	srv->cmds = create_cmds(void);
 }

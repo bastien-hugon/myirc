@@ -23,17 +23,11 @@
 */
 users_t *pull_user_in_chan_by_fd(chan_t *chan, int fd)
 {
-	users_t *tmp_user = NULL;
 	users_t *current = chan->users;
 
 	while (current) {
-		if (current->fd == fd) {
-			(tmp_user) ? (tmp_user->next = current->next) : \
-			(chan->users = current->next);
-			current->next = NULL;
+		if (current->fd == fd)
 			return (current);
-		}
-		tmp_user = current;
 		current = current->next;
 	}
 	return (NULL);
