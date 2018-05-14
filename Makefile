@@ -28,7 +28,10 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/channel_manager/join_channel.c \
 			./src_server/command_manager/exec_user_command.c
 
-SRCS_CLIENT	= 
+SRCS_CLIENT	=	./src_client/main.c \
+				./src_client/create_socket.c \
+				./src_client/read_on_fds.c \
+				./src_client/connection.c
 
 SRCS_TESTS	=	./tests/test_server/test_error_handling.c \
 			./src_server/dump_server.c \
@@ -45,15 +48,20 @@ SRCS_TESTS	=	./tests/test_server/test_error_handling.c \
 
 OBJS_SERVER	= $(SRCS_SERVER:.c=.o)
 
+OBJS_CLIENT	= $(SRCS_CLIENT:.c=.o)
+
 OBJS_TESTS	= $(SRCS_TESTS:.c=.o)
 
 CFLAGS = -I ./src_server/include/ -I./src_client/include/
 CFLAGS += -W -Wall -Wextra -g3
 
-all: $(SERVER)
+all: $(SERVER) $(CLIENT)
 
 $(SERVER): $(OBJS_SERVER)
 	$(CC) $(OBJS_SERVER) -o $(SERVER) $(LDFLAGS)
+
+$(CLIENT): $(OBJS_CLIENT)
+	$(CC) $(OBJS_CLIENT) -o $(CLIENT) $(LDFLAGS)
 
 unit_tests: $(OBJS_TESTS)
 	$(CC) -lcriterion -fprofile-arcs -ftest-coverage -fPIC --coverage $(CFLAGS) $(SRCS_TESTS) -o unit_tests
@@ -65,11 +73,11 @@ doxygen:
 	@chromium-browser ./bonus/doc/html/index.html
 
 clean:
-	$(RM) $(OBJS_SERVER)
+	$(RM) $(OBJS_SERVER) $(OBJS_CLIENT)
 	$(RM) *.g*
 
 fclean: clean
-	$(RM) $(SERVER)
+	$(RM) $(SERVER) $(CLIENT)
 	$(RM) unit_tests
 	$(RM) -Rf bonus/doc/
 
