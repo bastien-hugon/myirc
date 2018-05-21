@@ -43,7 +43,17 @@ static char *get_command(users_t *usr)
 */
 void exec_user_command(server_t *srv, users_t *usr)
 {
-	char *cmd = strtok(get_command(usr), "\r\n");
+	char **cmd = explode(strtok(get_command(usr), "\r\n"), " ");
+	int i = 0;
+	char msg[512];
 
+	for (i = 0; i < NB_CMDS; i++) {
+		if (!strcasecmp(srv->cmd_name[i], cmd[0]))
+			srv->cmds[i](srv, usr, cmd);
+	}
+	if (i >= NB_CMDS) {
+		sprintf(msg, REPL_421, cmd[0]);
+		send_message(usr, msg);
+	}
 	free(cmd);
 }
