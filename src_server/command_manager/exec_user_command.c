@@ -48,12 +48,13 @@ void exec_user_command(server_t *srv, users_t *usr)
 	char msg[512];
 
 	for (i = 0; i < NB_CMDS; i++) {
-		if (!strcasecmp(srv->cmd_name[i], cmd[0]))
+		if (!strcasecmp(srv->cmd_name[i], cmd[0])) {
 			srv->cmds[i](srv, usr, cmd);
+			free_tab(cmd);
+			return ;
+		}
 	}
-	if (i >= NB_CMDS) {
-		sprintf(msg, REPL_421, cmd[0]);
-		send_message(usr, msg);
-	}
-	free(cmd);
+	sprintf(msg, REPL_421, cmd[0]);
+	send_message(usr, msg);
+	free_tab(cmd);
 }

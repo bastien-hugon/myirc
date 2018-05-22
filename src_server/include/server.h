@@ -94,7 +94,7 @@
 		struct sockaddr_in s_s_in;
 	} socket_t;
 
-	typedef bool (*fptr)(void *, users_t *, char **);
+	typedef void (*fptr)(void *, users_t *, char **);
 	/**
 	* @struct server_t
 	* @brief Structure générale du server.

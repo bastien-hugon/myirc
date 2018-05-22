@@ -15,7 +15,7 @@
 #include "server.h"
 
 /**
-*@brief Cheack if an user exists
+*@brief Check if an user exists
 *
 *@param usr The user linked list
 *@param nick The nickname to find
@@ -26,8 +26,8 @@ bool user_exist(users_t *usr, char *nick)
 {
 	users_t *tmp = usr;
 
-	while (usr) {
-		if (!strcasecmp(nick, tmp->nick))
+	while (tmp) {
+		if (tmp->nick && !strcasecmp(nick, tmp->nick))
 			return (true);
 		tmp = tmp->next;
 	}
@@ -41,12 +41,13 @@ bool user_exist(users_t *usr, char *nick)
 *@param usr The user who called it
 *@param cmd All the cmd called
 */
-void cmd_nick(server_t *srv, users_t *usr, char **cmd)
+void cmd_nick(void *ptr, users_t *usr, char **cmd)
 {
-	char msg[50];
+	server_t *srv = ptr;
+	char msg[50] = { 0 };
 
 	if (cmd[1] == NULL) {
-		sprintf(msg, REPL_461, "NICK")
+		sprintf(msg, REPL_461, "NICK");
 		send_message(usr, msg);
 	} else if (user_exist(srv->chan->users, cmd[1])) {
 		sprintf(msg, REPL_433, cmd[1]);

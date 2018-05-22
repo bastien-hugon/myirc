@@ -24,11 +24,16 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/socket_manager/circular_buffer.c \
 			./src_server/user_manager/create_user.c \
 			./src_server/user_manager/get_users.c \
+			./src_server/user_manager/is_logged.c \
 			./src_server/channel_manager/create_channel.c \
 			./src_server/channel_manager/join_channel.c \
 			./src_server/command_manager/exec_user_command.c \
 			./src_server/command_manager/send_message.c \
 			./src_server/command_manager/explode.c \
+			./src_server/command_manager/cmd_user.c \
+			./src_server/command_manager/cmd_nick.c \
+			./src_server/command_manager/cmd_join.c \
+			./src_server/command_manager/free_tab.c \
 			./src_server/command_manager/create_commands.c
 
 SRCS_CLIENT	= 
@@ -51,7 +56,7 @@ OBJS_SERVER	= $(SRCS_SERVER:.c=.o)
 OBJS_TESTS	= $(SRCS_TESTS:.c=.o)
 
 CFLAGS = -I ./src_server/include/ -I./src_client/include/
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -W -Wall -Wextra -g3
 
 all: $(SERVER)
 

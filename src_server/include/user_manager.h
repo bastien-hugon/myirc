@@ -19,5 +19,6 @@
 
 	users_t *create_user(void);
 	users_t *get_user_by_fd(server_t *srv, int fd);
+	bool is_logged(users_t *);
 
 #endif /* !USER_MANAGER_H_ */
