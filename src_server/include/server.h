@@ -94,6 +94,7 @@
 		struct sockaddr_in s_s_in;
 	} socket_t;
 
+	typedef void (*fptr)(void *, users_t *, char **);
 	/**
 	* @struct server_t
 	* @brief Structure générale du server.
@@ -105,10 +106,12 @@
 		socket_t sock;
 		chan_t *chan;
 		fptr *cmds;
+		char **cmd_name;
 		struct epoll_event ev;
 		struct epoll_event events[MAX_EVENTS];
 		int epollfd;
 	} server_t;
+
 
 	#include "error_handling.h"
 	#include "init.h"
@@ -116,6 +119,7 @@
 	#include "user_manager.h"
 	#include "channel_manager.h"
 	#include "command_manager.h"
+	#include "messages.h"
 
 	void dump_server(server_t *srv);
 

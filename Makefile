@@ -24,9 +24,17 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/socket_manager/circular_buffer.c \
 			./src_server/user_manager/create_user.c \
 			./src_server/user_manager/get_users.c \
+			./src_server/user_manager/is_logged.c \
 			./src_server/channel_manager/create_channel.c \
 			./src_server/channel_manager/join_channel.c \
-			./src_server/command_manager/exec_user_command.c
+			./src_server/command_manager/exec_user_command.c \
+			./src_server/command_manager/send_message.c \
+			./src_server/command_manager/explode.c \
+			./src_server/command_manager/cmd_user.c \
+			./src_server/command_manager/cmd_nick.c \
+			./src_server/command_manager/cmd_join.c \
+			./src_server/command_manager/free_tab.c \
+			./src_server/command_manager/create_commands.c
 
 SRCS_CLIENT	=	./src_client/main.c \
 				./src_client/create_socket.c \

@@ -15,6 +15,22 @@
 #include "server.h"
 
 /**
+*@brief Get the cmd_names object
+*
+*@return char** The array of cmd names
+*/
+char **get_cmd_names(void)
+{
+	char **cmds = malloc(sizeof(char *) * (NB_CMDS + 1));
+
+	cmds[C_NICK] = strdup("nick");
+	cmds[C_USER] = strdup("user");
+	cmds[C_JOIN] = strdup("join");
+	cmds[NB_CMDS] = NULL;
+	return (cmds);
+}
+
+/**
 *@brief Create a cmds object
 *
 *@return fptr* return the array of function pointers
@@ -25,5 +41,6 @@ fptr *create_cmds(void)
 
 	cmds[C_NICK] = cmd_nick;
 	cmds[C_USER] = cmd_user;
+	cmds[C_JOIN] = cmd_join;
 	return (cmds);
 }
