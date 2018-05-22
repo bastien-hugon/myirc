@@ -21,7 +21,17 @@
 *@param usr The user who called it
 *@param cmd All the cmd called
 */
-void cmd_user(server_t *srv, users_t *usr, char **cmd)
+void cmd_user(void *ptr, users_t *usr, char **cmd)
 {
+	(void)ptr;
+	char msg[50] = { 0 };
 
+	for (int i = 0; i < 5; i++) {
+		if (cmd[i] == NULL) {
+			sprintf(msg, REPL_461, "USER");
+			send_message(usr, msg);
+			return ;
+		}
+	}
+	usr->is_logged = true;
 }
