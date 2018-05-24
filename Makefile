@@ -33,6 +33,7 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/command_manager/cmd_user.c \
 			./src_server/command_manager/cmd_nick.c \
 			./src_server/command_manager/cmd_join.c \
+			./src_server/command_manager/cmd_quit.c \
 			./src_server/command_manager/free_tab.c \
 			./src_server/command_manager/create_commands.c
 
@@ -56,7 +57,7 @@ OBJS_SERVER	= $(SRCS_SERVER:.c=.o)
 OBJS_TESTS	= $(SRCS_TESTS:.c=.o)
 
 CFLAGS = -I ./src_server/include/ -I./src_client/include/
-CFLAGS += -W -Wall -Wextra -g3
+CFLAGS += -W -Wall -Wextra
 
 all: $(SERVER)
 
