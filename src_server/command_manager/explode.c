@@ -5,7 +5,11 @@
 ** Explode function
 */
 
-#include "server.h"
+//#include "server.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
 
 bool is_lim(char c, char *lim)
 {
@@ -19,7 +23,7 @@ int count_words(char *str, char *lim)
 {
 	int words = 0;
 
-	for (int i = 0; str[i]; i++) {
+	for (int i = 0; str[i]; ) {
 		while (str[i] && is_lim(str[i], lim))
 			i++;
 		if (str[i]) {
@@ -27,7 +31,6 @@ int count_words(char *str, char *lim)
 			while (str[i] && !is_lim(str[i], lim))
 				i++;
 		}
-		--i;
 	}
 	return (words);
 }
@@ -46,14 +49,14 @@ int word_len(char *str, char *lim)
 
 char **explode(char *str, char *lim)
 {
+	int len;
 	int j = 0;
-	int len = 0;
 	int words = count_words(str, lim);
 	char **tab = malloc(sizeof(char *) * (words + 1));
 	if (!tab)
 		return (NULL);
 	tab[words] = NULL;
-	for (int i = 0; str[i]; i++, j++) {
+	for (int i = 0; str[i]; j++) {
 		while (str[i] && is_lim(str[i], lim))
 			i++;
 		if (str[i]) {
@@ -61,9 +64,8 @@ char **explode(char *str, char *lim)
 			tab[j] = malloc(sizeof(char) * (len + 1));
 			strncpy(tab[j], str + i, len);
 			tab[j][len] = '\0';
-			while (str[i++] && !is_lim(str[i], lim));
+			i += len;
 		}
-		--i;
 	}
 	return (tab);
 }

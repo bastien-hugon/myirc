@@ -24,3 +24,19 @@ void send_message(users_t *usr, char *msg)
 {
 	dprintf(usr->fd, "%s\n", msg);
 }
+
+/**
+*@brief Send a message to all the channel's users
+*
+*@param chan The channel to send the message
+*@param msg The message to send
+*/
+void chan_broadcast_message(chan_t *chan, char *msg)
+{
+	users_t *tmp = chan->users;
+
+	while (tmp) {
+		dprintf(tmp->fd, "%s\n", msg);
+		tmp = tmp->next;
+	}
+}

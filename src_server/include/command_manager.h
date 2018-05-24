@@ -17,13 +17,14 @@
 	*/
 	#include "server.h"
 
-	#define NB_CMDS (3)
+	#define NB_CMDS (4)
 
 	typedef enum
 	{
 		C_NICK, \
 		C_USER, \
-		C_JOIN
+		C_JOIN, \
+		C_QUIT
 	} cmds_e;
 
 	fptr *create_cmds(void);
@@ -31,9 +32,11 @@
 	char **get_cmd_names(void);
 	void exec_user_command(server_t *srv, users_t *usr);
 	void send_message(users_t *usr, char *msg);
+	void chan_broadcast_message(chan_t *chan, char *msg);
 	char **explode(char *str, char *lim);
 	void cmd_user(void *, users_t *, char **);
 	void cmd_nick(void *, users_t *, char **);
 	void cmd_join(void *, users_t *, char **);
+	void cmd_quit(void *, users_t *, char **);
 
 #endif /* !COMMAND_MANAGER_H_ */

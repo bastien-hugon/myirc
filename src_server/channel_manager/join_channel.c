@@ -15,6 +15,26 @@
 #include "server.h"
 
 /**
+*@brief Check if an user is on the channel
+*
+*@param chan The chan to check
+*@param fd The user fd
+*@return true Is on chan
+*@return false Is not on chan
+*/
+bool is_on_chan(chan_t *chan, int fd)
+{
+	users_t *tmp = chan->users;
+
+	while (tmp) {
+		if (tmp->fd == fd)
+			return (true);
+		tmp = tmp->next;
+	}
+	return (false);
+}
+
+/**
 *@brief Get the channel object
 *
 *@param srv Main server_t struct

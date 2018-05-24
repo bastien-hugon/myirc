@@ -36,6 +36,31 @@ static char *get_command(users_t *usr)
 }
 
 /**
+*@brief Exec only the command passed as argument
+*
+*@param srv The server_t main structure
+*@param usr The usr who executed the command
+*@param cmd The command sent
+*/
+static void exec_one_command(server_t *srv, users_t *usr, char *cmd)
+{
+	char **tab = explode(strtok(cmd, "\r\n"), " ");
+	int i;
+	char msg[512];
+
+	for (i = 0; i < NB_CMDS; i++) {
+		if (!strcasecmp(srv->cmd_name[i], tab[0])) {
+			srv->cmds[i](srv, usr, tab);
+			free_tab(tab);
+			return ;
+		}
+	}
+	sprintf(msg, REPL_421, tab[0]);
+	send_message(usr, msg);
+	free_tab(tab);
+}
+
+/**
 *@brief Execute an user command's
 *
 *@param srv The main server_t struct
@@ -43,18 +68,9 @@ static char *get_command(users_t *usr)
 */
 void exec_user_command(server_t *srv, users_t *usr)
 {
-	char **cmd = explode(strtok(get_command(usr), "\r\n"), " ");
-	int i = 0;
-	char msg[512];
+	char **cmd = explode(get_command(usr), "\r\n");
 
-	for (i = 0; i < NB_CMDS; i++) {
-		if (!strcasecmp(srv->cmd_name[i], cmd[0])) {
-			srv->cmds[i](srv, usr, cmd);
-			free_tab(cmd);
-			return ;
-		}
-	}
-	sprintf(msg, REPL_421, cmd[0]);
-	send_message(usr, msg);
+	for (int i = 0; cmd[i]; i++)
+		exec_one_command(srv, usr, cmd[i]);
 	free_tab(cmd);
 }

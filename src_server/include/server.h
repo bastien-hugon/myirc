@@ -23,6 +23,7 @@
 	#include <sys/types.h>
 	#include <sys/stat.h>
 	#include <signal.h>
+	#include <time.h>
 
 	#include <sys/socket.h>
 	#include <netdb.h>
@@ -107,6 +108,7 @@
 		chan_t *chan;
 		fptr *cmds;
 		char **cmd_name;
+		char date[15];
 		struct epoll_event ev;
 		struct epoll_event events[MAX_EVENTS];
 		int epollfd;
