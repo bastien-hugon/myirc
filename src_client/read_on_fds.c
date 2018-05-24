@@ -29,9 +29,10 @@ void read_on_fds(client_t *client)
 			exit(EXIT_FAILURE);
 		}
 		if (FD_ISSET(STDIN, &fds)){
-			printf("User input - stdin\n");
+			action_on_stdin(client);
 		}
-		if (FD_ISSET(sd, &fds))
-			printf("\nServer input - his fd");
+		if (FD_ISSET(sd, &fds)) {
+			action_on_server_fd(client);
+		}
 	}
 }

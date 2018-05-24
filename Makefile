@@ -39,6 +39,11 @@ SRCS_SERVER	=	./src_server/main.c \
 SRCS_CLIENT	=	./src_client/main.c \
 				./src_client/create_socket.c \
 				./src_client/read_on_fds.c \
+				./src_client/free_tab.c \
+				./src_server/command_manager/explode.c \
+				./src_client/action_on_stdin.c \
+				./src_client/action_on_server_fd.c \
+				./src_client/strtoupper.c \
 				./src_client/connection.c
 
 SRCS_TESTS	=	./tests/test_server/test_error_handling.c \

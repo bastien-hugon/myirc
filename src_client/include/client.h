@@ -29,6 +29,7 @@
 	#include <netinet/in.h>
 	#include <arpa/inet.h>
 	#include <sys/epoll.h>
+	#include "server.h"
 
 	#undef EXIT_FAILURE
 	#define EXIT_FAILURE (84)
@@ -51,6 +52,8 @@
 		struct sockaddr_in s_in;
 		struct protoent *pe;
 	}			   client_t;
+
+	char *strtoupper(char *s);
 
 	#include "init_client.h"
 
