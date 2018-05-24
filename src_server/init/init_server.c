@@ -23,7 +23,8 @@
 void init_server(server_t *srv, int port)
 {
 	struct protoent *pe = getprotobyname("TCP");
-
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
 	srv->port = port;
 	if ((srv->sock.s_fd = socket(AF_INET, SOCK_STREAM, pe->p_proto)) == -1)
 		exit(error_msg("Cannot create socket"));
@@ -39,4 +40,6 @@ void init_server(server_t *srv, int port)
 	add_channel(srv, create_channel("@ghost"));
 	srv->cmds = create_cmds();
 	srv->cmd_name = get_cmd_names();
+	sprintf(srv->date, "%d-%d-%d %d:%d:%d", tm.tm_year + 1900, \
+	tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 }

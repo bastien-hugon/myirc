@@ -9,10 +9,10 @@
 	#define MESSAGES_H_
 
 	#define REPL_001 ("001 Welcome to the Internet Relay Network %s!%s@<host>")
-	#define REPL_002 ("002 Your host is <servername>, running version <ver>")
-	#define REPL_003 ("003 This server was created <date>")
+	#define REPL_002 ("002 Your host is epirc.tls, running version 1.0.0")
+	#define REPL_003 ("003 This server was created %s")
 	#define REPL_004 ("004 <servername> <version> <available user modes> <available channel modes>")
-	#define REPL_005 ("005 Try server <server name>, port <port number>")
+	#define REPL_005 ("005 Try server epirc.tls, port %d")
 	#define REPL_200 ("200 Link <version & debug level> <destination> <next server> V<protocol version> <link uptime in seconds> <backstream sendq> <upstream sendq>")
 	#define REPL_201 ("201 Try. <class> <server>")
 	#define REPL_202 ("202 H.S. <class> <server>")
@@ -94,7 +94,7 @@
 	#define REPL_402 ("402 <server name> :No such server")
 	#define REPL_403 ("403 <channel name> :No such channel")
 	#define REPL_404 ("404 <channel name> :Cannot send to channel")
-	#define REPL_405 ("405 <channel name> :You have joined too many channels")
+	#define REPL_405 ("405 %s :You have joined too many channels")
 	#define REPL_406 ("406 <nickname> :There was no such nickname")
 	#define REPL_407 ("407 <target> :<error code> recipients. <abort message>")
 	#define REPL_408 ("408 <service name> :No such service")

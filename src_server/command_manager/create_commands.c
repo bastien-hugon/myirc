@@ -26,6 +26,7 @@ char **get_cmd_names(void)
 	cmds[C_NICK] = strdup("nick");
 	cmds[C_USER] = strdup("user");
 	cmds[C_JOIN] = strdup("join");
+	cmds[C_QUIT] = strdup("quit");
 	cmds[NB_CMDS] = NULL;
 	return (cmds);
 }
@@ -42,5 +43,6 @@ fptr *create_cmds(void)
 	cmds[C_NICK] = cmd_nick;
 	cmds[C_USER] = cmd_user;
 	cmds[C_JOIN] = cmd_join;
+	cmds[C_QUIT] = cmd_quit;
 	return (cmds);
 }

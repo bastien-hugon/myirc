@@ -23,5 +23,5 @@
 */
 bool is_logged(users_t *usr)
 {
-	return (usr->is_logged);
+	return (usr->is_logged && (usr->nick != NULL));
 }
