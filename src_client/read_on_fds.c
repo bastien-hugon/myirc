@@ -5,6 +5,14 @@
 ** read_on_fds
 */
 
+/**
+* @brief Permit to reads on each fd
+*
+* @file read_on_fds.c
+* @author Vivies Antoine
+* @date 14-05-2018
+*/
+
 #include "client.h"
 
 /**
@@ -32,7 +40,7 @@ void read_on_fds(client_t *client)
 			action_on_stdin(client);
 		}
 		if (FD_ISSET(sd, &fds)) {
-			action_on_server_fd(client);
+			write_server_returns_code(client);
 		}
 	}
 }

@@ -15,21 +15,8 @@
 	* @author Vivies Antoine
 	* @date 07-05-2018
 	*/
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <unistd.h>
-	#include <stdbool.h>
-	#include <string.h>
-	#include <sys/types.h>
-	#include <sys/stat.h>
-	#include <signal.h>
-
-	#include <sys/socket.h>
-	#include <netdb.h>
-	#include <netinet/in.h>
-	#include <arpa/inet.h>
-	#include <sys/epoll.h>
 	#include "server.h"
+	#include <ctype.h>
 
 	#undef EXIT_FAILURE
 	#define EXIT_FAILURE (84)
@@ -54,6 +41,13 @@
 	}			   client_t;
 
 	char *strtoupper(char *s);
+	void create_socket(client_t *client);
+	void read_on_fds(client_t *client);
+	void connection(client_t *client);
+	void action_on_stdin(client_t *client);
+	void write_server_returns_code(client_t *client);
+
+
 
 	#include "init_client.h"
 

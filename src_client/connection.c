@@ -5,6 +5,14 @@
 ** connection
 */
 
+/**
+* @brief connection between client and server
+*
+* @file connection.c
+* @author Vivies Antoine
+* @date 07-05-2018
+*/
+
 #include "client.h"
 
 /**
