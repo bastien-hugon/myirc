@@ -92,7 +92,7 @@
 	#define REPL_395 ("395 :Nobody logged in")
 	#define REPL_401 ("401 <nickname> :No such nick/channel")
 	#define REPL_402 ("402 <server name> :No such server")
-	#define REPL_403 ("403 <channel name> :No such channel")
+	#define REPL_403 ("403 %s :No such channel")
 	#define REPL_404 ("404 <channel name> :Cannot send to channel")
 	#define REPL_405 ("405 %s :You have joined too many channels")
 	#define REPL_406 ("406 <nickname> :There was no such nickname")
