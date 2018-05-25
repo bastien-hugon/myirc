@@ -25,20 +25,20 @@
 void exec_to_serv(client_t *client, char **command_line, char *line)
 {
 	char *command;
+	command_ptr *cmd_ptr= init_fct_ptr();
+	char **tab_command = init_tab_ptr();
 
-	if (command_line[0][0] != '/') {
-		command = malloc((strlen("PRIVMSG ") + strlen(line) + 1));
-		command = strcpy(command, "PRIVMSG ");
-		command = strcat(command, (line));
-	} else if (strstr(command_line[0], "/msg")) {
-		command = malloc(strlen("PRIVMSG") + strlen(line + 3));
-		command = strcpy(command, "PRIVMSG");
-		command = strcat(command, (line + 4));
-	} else {
-		command = malloc(strlen(command_line[0] + 1) + strlen(line
-		 + strlen(command_line[0] + 1)));
-		command = strcpy(command, strtoupper(command_line[0] + 1));
-		command = strcat(command, (line + strlen(command_line[0])));
+	if (command_line[0][0] != '/') 
+		asprintf(&command, "PRIVMSG %s %s", line, client->channel);
+	else
+		command = get_upper_command(command_line, line);
+	for (int i = 0; tab_command[i] != NULL; i++) {
+		if (!strcmp(tab_command[i], command_line[0])) {
+			command = cmd_ptr[i](client, command_line, line);
+			if (command == NULL)
+				return;
+			break;
+		}
 	}
 	send(client->fd_server, command, strlen(command), MSG_EOR);
 	free(command);
@@ -54,14 +54,14 @@ void exec_to_serv(client_t *client, char **command_line, char *line)
 void action_on_stdin(client_t *client)
 {
 	char buff[1025];
-	FILE *standar_input = fdopen(STDIN, "r+");
 	int nb_read;
 	char **command_line;
 
-	fgets(buff, 1025, standar_input);
+	fgets(buff, 1025, stdin);
 	if (buff[0] == '\n')
 		return;
 	nb_read = strlen(buff);
+	strtok(buff, "\n");
 	command_line = explode(buff, " \t");
 	if (nb_read > 1024 || nb_read == 0) {
 		printf("Command too long or bad read\n");

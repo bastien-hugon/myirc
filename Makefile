@@ -43,7 +43,15 @@ SRCS_CLIENT	=	./src_client/main.c \
 				./src_client/free_tab.c \
 				./src_server/command_manager/explode.c \
 				./src_client/action_on_stdin.c \
+				./src_client/server.c \
+				./src_client/waiting_for_server.c \
 				./src_client/action_on_server_fd.c \
+				./src_client/get_upper_command.c \
+				./src_client/quit.c \
+				./src_client/msg.c \
+				./src_client/nick.c \
+				./src_client/join.c \
+				./src_client/init_fct_ptr.c \
 				./src_client/strtoupper.c \
 				./src_client/connection.c
 
@@ -67,7 +75,7 @@ OBJS_CLIENT	= $(SRCS_CLIENT:.c=.o)
 OBJS_TESTS	= $(SRCS_TESTS:.c=.o)
 
 CFLAGS = -I ./src_server/include/ -I./src_client/include/
-CFLAGS += -W -Wall -Wextra
+CFLAGS += -D_GNU_SOURCE -W -Wall -Wextra -g3
 
 all: $(SERVER) $(CLIENT)
 
