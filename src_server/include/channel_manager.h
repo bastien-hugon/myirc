@@ -20,6 +20,7 @@
 	bool join_channel(server_t *srv, int fd, char *chan_name);
 	chan_t *create_channel(char *);
 	chan_t *get_channel(server_t *srv, char *chan);
+	void remove_channel(server_t *srv, chan_t *chan);
 	void add_channel(server_t *srv, chan_t *chan);
 	void push_user_to_chan(users_t *usr, chan_t *chan);
 	bool is_on_chan(chan_t *chan, int fd);

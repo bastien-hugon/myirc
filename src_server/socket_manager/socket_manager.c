@@ -39,7 +39,7 @@ void manage_events(server_t *srv, int i)
 		//dump_server(srv);
 	} else {
 		call_worker(srv, srv->events[i].data.fd);
-		//dump_server(srv);
+		dump_server(srv);
 	}
 }
 
