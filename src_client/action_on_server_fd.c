@@ -15,6 +15,16 @@
 
 #include "client.h"
 
+void interpretation_of_returns(client_t *client, char *buff)
+{
+	char **command = explode(buff, " \t");
+
+	if (strstr(buff, "JOIN")) {
+		client->channel = strdup(command[2]);
+	}
+	free_tab(command);
+}
+
 /**
 * @brief Permit to write server codes
 *
@@ -24,13 +34,16 @@
 */
 void write_server_returns_code(client_t *client)
 {
-	char buff[1025];
+	char buff[1025] = { 0 };
 	int nb_read = read(client->fd_server, buff, 1025);
 
-	if (nb_read == -1) {
+	nb_read = strlen(buff);
+	buff[nb_read] = '\0';
+	if (nb_read == 0) {
 		printf("Bad read\n");
 		exit(EXIT_FAILURE);
 	} else {
 		printf("%s", buff);
+		interpretation_of_returns(client, buff);
 	}
 }

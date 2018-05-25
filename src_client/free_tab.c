@@ -23,9 +23,9 @@
 */
 int strlen_tab(char **tab)
 {
-    int i;
-    for (i = 0; tab[i] != NULL; i++);
-    return (i);
+	int i;
+	for (i = 0; tab[i] != NULL; i++);
+	return (i);
 }
 
 /**
@@ -37,10 +37,10 @@ int strlen_tab(char **tab)
 */
 void free_tab(char **tab)
 {
-    int i = strlen_tab(tab);
-    while (i != 0) {
-	free(tab[i]);
-	i--;
-    }
-    free(tab);
+	int i = strlen_tab(tab);
+	while (i != 0) {
+		free(tab[i]);
+		i--;
+	}
+	free(tab);
 }
