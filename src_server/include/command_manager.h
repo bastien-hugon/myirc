@@ -17,7 +17,7 @@
 	*/
 	#include "server.h"
 
-	#define NB_CMDS (5)
+	#define NB_CMDS (6)
 
 	typedef enum
 	{
@@ -25,6 +25,7 @@
 		C_USER, \
 		C_JOIN, \
 		C_QUIT, \
+		C_PRIVMSG, \
 		C_PART
 	} cmds_e;
 
@@ -37,10 +38,12 @@
 	char **explode(char *str, char *lim);
 	void leave_channel(server_t *srv, chan_t *chan, users_t *usr, \
 	char **cmd);
+	users_t *user_exists(users_t *usr, char *nick);
 	void cmd_user(void *, users_t *, char **);
 	void cmd_nick(void *, users_t *, char **);
 	void cmd_join(void *, users_t *, char **);
 	void cmd_quit(void *, users_t *, char **);
 	void cmd_part(void *, users_t *, char **);
+	void cmd_privmsg(void *, users_t *, char **);
 
 #endif /* !COMMAND_MANAGER_H_ */

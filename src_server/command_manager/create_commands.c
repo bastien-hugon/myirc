@@ -28,6 +28,7 @@ char **get_cmd_names(void)
 	cmds[C_JOIN] = strdup("join");
 	cmds[C_QUIT] = strdup("quit");
 	cmds[C_PART] = strdup("part");
+	cmds[C_PRIVMSG] = strdup("privmsg");
 	cmds[NB_CMDS] = NULL;
 	return (cmds);
 }
@@ -46,5 +47,6 @@ fptr *create_cmds(void)
 	cmds[C_JOIN] = cmd_join;
 	cmds[C_QUIT] = cmd_quit;
 	cmds[C_PART] = cmd_part;
+	cmds[C_PRIVMSG] = cmd_privmsg;
 	return (cmds);
 }

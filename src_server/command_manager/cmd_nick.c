@@ -35,6 +35,25 @@ bool user_exist(users_t *usr, char *nick)
 }
 
 /**
+*@brief Check if an user exists
+*
+*@param usr The user linked list
+*@param nick The nick to search
+*@return users_t* The user found
+*/
+users_t *user_exists(users_t *usr, char *nick)
+{
+	users_t *tmp = usr;
+
+	while (tmp) {
+		if (tmp->nick && !strcasecmp(nick, tmp->nick))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+/**
 *@brief Command NICK
 *
 *@param srv The server_t struct
