@@ -79,7 +79,7 @@ OBJS_TESTS	= $(SRCS_TESTS:.c=.o)
 
 CFLAGS = -I ./src_server/include/ -I./src_client/include/
 
-CFLAGS += -D_SOURCE_GNU -W -Wall -Wextra
+CFLAGS += -D_GNU_SOURCE -W -Wall -Wextra
 
 all: $(SERVER) $(CLIENT)
 
