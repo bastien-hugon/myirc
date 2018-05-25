@@ -39,8 +39,6 @@
 		char *ip;
 		struct sockaddr_in s_in;
 		struct protoent *pe;
-/* 		bool isConnected;
- */
 	}			   client_t;
 
 	typedef char *(*command_ptr)(client_t *, char **, char *);

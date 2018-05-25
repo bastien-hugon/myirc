@@ -28,8 +28,9 @@ void exec_to_serv(client_t *client, char **command_line, char *line)
 	command_ptr *cmd_ptr= init_fct_ptr();
 	char **tab_command = init_tab_ptr();
 
-	if (command_line[0][0] != '/') 
-		asprintf(&command, "PRIVMSG %s %s", line, client->channel);
+	if (command_line[0][0] != '/') {
+		asprintf(&command, "PRIVMSG %s %s\r\n", client->channel, line);
+	}
 	else
 		command = get_upper_command(command_line, line);
 	for (int i = 0; tab_command[i] != NULL; i++) {
