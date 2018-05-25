@@ -78,11 +78,8 @@ OBJS_CLIENT	= $(SRCS_CLIENT:.c=.o)
 OBJS_TESTS	= $(SRCS_TESTS:.c=.o)
 
 CFLAGS = -I ./src_server/include/ -I./src_client/include/
-<<<<<<< HEAD
+
 CFLAGS += -D_SOURCE_GNU -W -Wall -Wextra
-=======
-CFLAGS += -D_GNU_SOURCE -W -Wall -Wextra -g3
->>>>>>> 0d62ad6635532ba4cc2fe235d8a552d2a14a6ddc
 
 all: $(SERVER) $(CLIENT)
 
