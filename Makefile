@@ -27,6 +27,7 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/user_manager/is_logged.c \
 			./src_server/channel_manager/create_channel.c \
 			./src_server/channel_manager/join_channel.c \
+			./src_server/channel_manager/remove_channel.c \
 			./src_server/command_manager/exec_user_command.c \
 			./src_server/command_manager/send_message.c \
 			./src_server/command_manager/explode.c \
@@ -34,6 +35,7 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/command_manager/cmd_nick.c \
 			./src_server/command_manager/cmd_join.c \
 			./src_server/command_manager/cmd_quit.c \
+			./src_server/command_manager/cmd_part.c \
 			./src_server/command_manager/free_tab.c \
 			./src_server/command_manager/create_commands.c
 
