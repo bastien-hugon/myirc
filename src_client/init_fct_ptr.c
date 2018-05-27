@@ -22,7 +22,7 @@
 * @author Vivies Antoine
 * @date 20-05-2018
 */
-command_ptr *init_fct_ptr()
+command_ptr *init_fct_ptr(void)
 {
 	command_ptr *ptr = malloc(sizeof(*ptr) * 6);
 
@@ -44,7 +44,7 @@ command_ptr *init_fct_ptr()
 * @author Vivies Antoine
 * @date 20-05-2018
 */
-char **init_tab_ptr()
+char **init_tab_ptr(void)
 {
 	char **tab = malloc(sizeof(char *) * 6);
 

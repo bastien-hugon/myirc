@@ -21,7 +21,7 @@
 * @author Vivies Antoine
 * @date 07-05-2018
 */
-int main()
+int main(void)
 {
 	waiting_for_server();
 	return (0);

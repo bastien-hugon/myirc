@@ -25,7 +25,7 @@
 void exec_to_serv(client_t *client, char **command_line, char *line)
 {
 	char *command;
-	command_ptr *cmd_ptr= init_fct_ptr();
+	command_ptr *cmd_ptr = init_fct_ptr();
 	char **tab_command = init_tab_ptr();
 
 	if (command_line[0][0] != '/') {
@@ -37,7 +37,7 @@ void exec_to_serv(client_t *client, char **command_line, char *line)
 		if (!strcmp(tab_command[i], command_line[0])) {
 			command = cmd_ptr[i](client, command_line, line);
 			if (command == NULL)
-				return;
+				return ;
 			break;
 		}
 	}
@@ -60,14 +60,14 @@ void action_on_stdin(client_t *client)
 
 	fgets(buff, 1025, stdin);
 	if (buff[0] == '\n')
-		return;
+		return ;
 	nb_read = strlen(buff);
 	strtok(buff, "\n");
 	command_line = explode(buff, " \t");
 	if (nb_read > 1024 || nb_read == 0) {
 		printf("Command too long or bad read\n");
 		exit(EXIT_FAILURE);
-	} 
+	}
 	exec_to_serv(client, command_line, buff);
 	free_tab(command_line);
 }

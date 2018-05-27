@@ -13,7 +13,7 @@ void fill_client_struct(char **command_line, client_t *client)
 
 	client->ip = strdup(addr_and_ip[0]);
 	client->port = addr_and_ip[1] ? atoi(addr_and_ip[1]) : 6667;
-	if(client->port == 0) {
+	if (client->port == 0) {
 		printf("Bad Port\n");
 		exit(EXIT_FAILURE);
 	}
@@ -24,7 +24,7 @@ void fill_client_struct(char **command_line, client_t *client)
 	read_on_fds(client);
 }
 
-void waiting_for_server()
+void waiting_for_server(void)
 {
 	char buff[1025] = { 0 };
 	char **command_line;

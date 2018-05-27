@@ -12,11 +12,10 @@
 * @author Vivies Antoine
 * @date 20-05-2018
 */
-
 #include "client.h"
 
 /**
-* @brief Permit to fill the client_t struct and establish connection 
+* @brief Permit to fill the client_t struct and establish connection
 * with server
 *
 * @file server.c
@@ -29,7 +28,7 @@ client_t *connection_to_new_serv(char *command_line, client_t *client)
 
 	client->ip = strdup(addr_and_ip[0]);
 	client->port = addr_and_ip[1] ? atoi(addr_and_ip[1]) : 6667;
-	if(client->port == 0) {
+	if (client->port == 0) {
 		printf("Bad Port\n");
 		exit(EXIT_FAILURE);
 	}

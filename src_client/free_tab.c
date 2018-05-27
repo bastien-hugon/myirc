@@ -6,7 +6,7 @@
 */
 
 /**
-* @brief Essentials funnction to free a char**
+* @brief Essentials funnction to free a char **
 *
 * @file free_tab.c
 * @author Vivies Antoine
