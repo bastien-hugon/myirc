@@ -81,10 +81,14 @@ CFLAGS = -I ./src_server/include/ -I./src_client/include/
 
 CFLAGS += -D_GNU_SOURCE -W -Wall -Wextra
 
-all: $(SERVER) $(CLIENT)
+all: server client
+
+server:
 
 $(SERVER): $(OBJS_SERVER)
 	$(CC) $(OBJS_SERVER) -o $(SERVER) $(LDFLAGS)
+
+client:
 
 $(CLIENT): $(OBJS_CLIENT)
 	$(CC) $(OBJS_CLIENT) -o $(CLIENT) $(LDFLAGS)
