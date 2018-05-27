@@ -31,8 +31,7 @@ void dump_server(server_t *srv)
 {
 	chan_t *tmp = srv->chan;
 
-	printf("=========\n\nServer running on port: %d\n", srv->port);
-	printf("Users connected: %d\n\n=========\n\n", srv->nb_connect);
+	printf("Server running on port: %d\n", srv->port);
 	while (tmp) {
 		printf("Chan: %s\n", tmp->name);
 		dump_channel(tmp);

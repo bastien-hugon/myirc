@@ -17,7 +17,7 @@
 /**
 *@brief Get the cmd_names object
 *
-*@return char** The array of cmd names
+*@return char ** The array of cmd names
 */
 char **get_cmd_names(void)
 {

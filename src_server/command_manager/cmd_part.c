@@ -17,10 +17,10 @@
 /**
 *@brief Leave a channel and broadcast a leave message
 *
-*@param chan 
-*@param usr 
-*@param chan_name 
-*@param l_msg 
+*@param chan The chan_t struct to leave
+*@param usr The user who wants to quit
+*@param chan_name The channel name
+*@param l_msg The msg when leave the chan
 */
 void leave_channel(server_t *srv, chan_t *chan, users_t *usr, \
 char **cmd)

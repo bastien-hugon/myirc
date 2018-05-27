@@ -41,22 +41,22 @@ SRCS_SERVER	=	./src_server/main.c \
 			./src_server/command_manager/create_commands.c
 
 SRCS_CLIENT	=	./src_client/main.c \
-				./src_client/create_socket.c \
-				./src_client/read_on_fds.c \
-				./src_client/free_tab.c \
-				./src_server/command_manager/explode.c \
-				./src_client/action_on_stdin.c \
-				./src_client/server.c \
-				./src_client/waiting_for_server.c \
-				./src_client/action_on_server_fd.c \
-				./src_client/get_upper_command.c \
-				./src_client/quit.c \
-				./src_client/msg.c \
-				./src_client/nick.c \
-				./src_client/join.c \
-				./src_client/init_fct_ptr.c \
-				./src_client/strtoupper.c \
-				./src_client/connection.c
+			./src_client/create_socket.c \
+			./src_client/read_on_fds.c \
+			./src_client/free_tab.c \
+			./src_server/command_manager/explode.c \
+			./src_client/action_on_stdin.c \
+			./src_client/server.c \
+			./src_client/waiting_for_server.c \
+			./src_client/action_on_server_fd.c \
+			./src_client/get_upper_command.c \
+			./src_client/quit.c \
+			./src_client/msg.c \
+			./src_client/nick.c \
+			./src_client/join.c \
+			./src_client/init_fct_ptr.c \
+			./src_client/strtoupper.c \
+			./src_client/connection.c
 
 SRCS_TESTS	=	./tests/test_server/test_error_handling.c \
 			./src_server/dump_server.c \
@@ -66,10 +66,39 @@ SRCS_TESTS	=	./tests/test_server/test_error_handling.c \
 			./src_server/init/init_epoll.c \
 			./src_server/socket_manager/socket_manager.c \
 			./src_server/socket_manager/call_worker.c \
+			./src_server/socket_manager/circular_buffer.c \
 			./src_server/user_manager/create_user.c \
 			./src_server/user_manager/get_users.c \
+			./src_server/user_manager/is_logged.c \
 			./src_server/channel_manager/create_channel.c \
-			./src_server/channel_manager/join_channel.c
+			./src_server/channel_manager/join_channel.c \
+			./src_server/channel_manager/remove_channel.c \
+			./src_server/command_manager/exec_user_command.c \
+			./src_server/command_manager/send_message.c \
+			./src_server/command_manager/explode.c \
+			./src_server/command_manager/cmd_user.c \
+			./src_server/command_manager/cmd_nick.c \
+			./src_server/command_manager/cmd_join.c \
+			./src_server/command_manager/cmd_quit.c \
+			./src_server/command_manager/cmd_part.c \
+			./src_server/command_manager/cmd_privmsg.c \
+			./src_server/command_manager/create_commands.c \
+			./src_client/create_socket.c \
+			./src_client/read_on_fds.c \
+			./src_client/free_tab.c \
+			./src_client/action_on_stdin.c \
+			./src_client/server.c \
+			./src_client/waiting_for_server.c \
+			./src_client/action_on_server_fd.c \
+			./src_client/get_upper_command.c \
+			./src_client/quit.c \
+			./src_client/msg.c \
+			./src_client/nick.c \
+			./src_client/join.c \
+			./src_client/init_fct_ptr.c \
+			./src_client/strtoupper.c \
+			./src_client/connection.c
+
 
 OBJS_SERVER	= $(SRCS_SERVER:.c=.o)
 
