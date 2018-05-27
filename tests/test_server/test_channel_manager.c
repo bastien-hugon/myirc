@@ -10,28 +10,6 @@
 
 Test(channel_manager, channel_manager_1)
 {
-<<<<<<< HEAD
-	chan_t *chan = create_channel("#toto");
-
-	cr_assert(!strcmp("#toto", chan->name), "Bad channel management");
-}
-
-Test(channel_manager, channel_manager_2)
-{
-	server_t *srv;
-	chan_t *chan;
-
-	chan = create_and_add_chan("#toto");
-	init_server(&srv, 4242);
-	cr_assert(!strcmp("#toto", chan->name), "Bad channel management");
-}
-
-Test(channel_manager, channel_manager_3)
-{
-	server_t *srv;
-
-	init_server(&srv, 4242);
-=======
 	server_t srv;
 	chan_t *chan;
 	users_t *usr = create_user();
@@ -44,5 +22,4 @@ Test(channel_manager, channel_manager_3)
 	(&srv)->chan->users = usr;
 	join_channel(&srv, 12, "#toto");
 	cr_assert(is_on_chan((&srv)->chan, 12), "Bad channel management");
->>>>>>> bastien
 }
