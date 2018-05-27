@@ -59,6 +59,9 @@ SRCS_CLIENT	=	./src_client/main.c \
 			./src_client/connection.c
 
 SRCS_TESTS	=	./tests/test_server/test_error_handling.c \
+			./tests/test_server/test_channel_manager.c \
+			./tests/test_server/test_explode.c \
+			./tests/test_server/test_command_manager.c \
 			./src_server/dump_server.c \
 			./src_server/error_handling/check_param.c \
 			./src_server/error_handling/print_messages.c \
@@ -132,7 +135,7 @@ doxygen:
 	@chromium-browser ./bonus/doc/html/index.html
 
 clean:
-	$(RM) $(OBJS_SERVER) $(OBJS_CLIENT)
+	$(RM) $(OBJS_SERVER) $(OBJS_CLIENT) $(OBJS_TESTS)
 	$(RM) *.g*
 
 fclean: clean
