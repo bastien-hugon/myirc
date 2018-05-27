@@ -83,6 +83,9 @@ SRCS_TESTS	=	./tests/test_server/test_error_handling.c \
 			./src_server/command_manager/cmd_part.c \
 			./src_server/command_manager/cmd_privmsg.c \
 			./src_server/command_manager/create_commands.c \
+			./tests/test_client/test_init_fct_ptr.c \
+			./tests/test_client/test_strtoupper.c \
+			./tests/test_client/test_join.c \
 			./src_client/create_socket.c \
 			./src_client/read_on_fds.c \
 			./src_client/free_tab.c \

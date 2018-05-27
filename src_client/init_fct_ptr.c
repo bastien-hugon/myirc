@@ -25,6 +25,9 @@
 command_ptr *init_fct_ptr()
 {
 	command_ptr *ptr = malloc(sizeof(*ptr) * 6);
+
+	if (ptr == NULL)
+		return (NULL);
 	ptr[0] = join;
 	ptr[1] = nick;
 	ptr[2] = server;
@@ -44,6 +47,9 @@ command_ptr *init_fct_ptr()
 char **init_tab_ptr()
 {
 	char **tab = malloc(sizeof(char *) * 6);
+
+	if (tab == NULL)
+		return (NULL);
 	tab[0] = strdup("/JOIN");
 	tab[1] = strdup("/NICK");
 	tab[2] = strdup("/SERVER");
